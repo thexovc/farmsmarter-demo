@@ -6,7 +6,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#93CC00',
+        'farmsmarter-green': '#6A8A2C',
+        'farmsmarter-darkgreen': '#2C4A1E',
+        'farmsmarter-yellow': '#F5D94E',
+        'farmsmarter-blue': '#4A7BA7',
+        'farmsmarter-orange': '#F28C28',
+        'farmsmarter-light': '#F5F5F5',
       },
     },
   },

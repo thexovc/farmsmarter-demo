@@ -1,50 +1,73 @@
-# Welcome to your Expo app 👋
+# FarmSmarter E-Commerce App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mock e-commerce mobile app built with Expo (React Native), featuring authentication, product listing, cart, purchase, and real device location. Styled with NativeWind (Tailwind for RN) and following best practices.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Onboarding screen
+- Authentication (login/signup, users stored in `assets/data/users.json`)
+- Product listing (from `assets/data/products.json`)
+- Add to cart, view cart, remove items, purchase (mocked)
+- Real device location (Expo Location)
+- Search/filter products
+- Profile screen (user info, logout)
+- Persistent cart and login state (AsyncStorage)
+- Modern, branded UI with FarmSmarter colors
 
+## Setup Instructions
+
+1. **Clone the repo:**
+   ```bash
+   git clone <your-repo-url>
+   cd farm-starter
+   ```
+2. **Install dependencies:**
    ```bash
    npm install
    ```
-
-2. Start the app
-
+3. **Start the app:**
    ```bash
    npx expo start
    ```
+4. **Run on your device:**
+   - Use the Expo Go app (iOS/Android) or an emulator/simulator.
 
-In the output, you'll find options to open the app in a
+## How to Test Login/Signup
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **Default test user:**
+  - Email: `demo@farmsmarter.app`
+  - Password: `password123`
+- **Sign up:**
+  - Use the signup screen to create a new user (appends to `users.json`).
+- **Login:**
+  - Use your credentials to log in. Credentials are validated against `users.json`.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Tech Stack
 
-## Get a fresh project
+- React Native (Expo, TypeScript)
+- NativeWind (Tailwind CSS for RN)
+- React Hook Form + Yup (forms/validation)
+- Expo Location (real device location)
+- Expo FileSystem (read/write JSON data)
+- AsyncStorage (persist cart/login)
 
-When you're ready, run:
+## Brand Colors
 
-```bash
-npm run reset-project
-```
+- Green: `#6A8A2C`
+- Dark Green: `#2C4A1E`
+- Yellow: `#F5D94E`
+- Blue: `#4A7BA7`
+- Orange: `#F28C28`
+- Light: `#F5F5F5`
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Contact
 
-## Learn more
+FarmSmarter Ltd (Nig)  
+144 Old Ojo Road, Agboju Amuwo, Lagos  
+www.farmsmarter.app  
+Tel: (+234) 08151478642  
+E: hello@farmsmarter.app
 
-To learn more about developing your project with Expo, look at the following resources:
+## Screenshots
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+_Add screenshots of the app here_

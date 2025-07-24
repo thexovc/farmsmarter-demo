@@ -40,18 +40,10 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="person-outline" focused={focused} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="categories"
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon name="folder-open-outline" focused={focused} />
+            <TabIcon name="home-outline" focused={focused} />
           ),
         }}
       />
@@ -59,15 +51,15 @@ export default function TabLayout() {
         name="cart"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="checkmark-done-circle-outline" focused={focused} />
+            <TabIcon name="cart-outline" focused={focused} />
           ),
         }}
       />
       <Tabs.Screen
-        name="wishlist"
+        name="profile"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="calendar-outline" focused={focused} />
+            <TabIcon name="person-outline" focused={focused} />
           ),
         }}
       />

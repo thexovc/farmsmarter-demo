@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Organic Tomatoes",
+    "price": 3.99,
+    "image": "https://via.placeholder.com/150?text=Tomatoes",
+    "stock": 20
+  },
+  {
+    "id": 2,
+    "name": "Fresh Lettuce",
+    "price": 2.49,
+    "image": "https://via.placeholder.com/150?text=Lettuce",
+    "stock": 15
+  },
+  {
+    "id": 3,
+    "name": "Farm Eggs (12pcs)",
+    "price": 4.99,
+    "image": "https://via.placeholder.com/150?text=Eggs",
+    "stock": 30
+  }
+] 
