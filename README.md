@@ -6,13 +6,15 @@ A mock e-commerce mobile app built with Expo (React Native), featuring authentic
 
 - Onboarding screen
 - Authentication (login/signup, users stored in `assets/data/users.json`)
-- Product listing (from `assets/data/products.json`)
+- Product listing (from `assets/data/products.json`) with high-quality product images
 - Add to cart, view cart, remove items, purchase (mocked)
+- Smart cart UI - purchase button and total only show when cart has items
 - Real device location (Expo Location)
 - Search/filter products
 - Profile screen (user info, logout)
 - Persistent cart and login state (AsyncStorage)
 - Modern, branded UI with FarmSmarter colors
+- Responsive product cards with consistent alignment and spacing
 
 ## Setup Instructions
 
@@ -35,8 +37,8 @@ A mock e-commerce mobile app built with Expo (React Native), featuring authentic
 ## How to Test Login/Signup
 
 - **Default test user:**
-  - Email: `demo@farmsmarter.app`
-  - Password: `password123`
+  - Email: `john@farmsmarter.app`
+  - Password: `Password@123`
 - **Sign up:**
   - Use the signup screen to create a new user (appends to `users.json`).
 - **Login:**
@@ -50,6 +52,7 @@ A mock e-commerce mobile app built with Expo (React Native), featuring authentic
 - Expo Location (real device location)
 - Expo FileSystem (read/write JSON data)
 - AsyncStorage (persist cart/login)
+- Unsplash API (high-quality product images)
 
 ## Brand Colors
 
@@ -67,7 +70,3 @@ FarmSmarter Ltd (Nig)
 www.farmsmarter.app  
 Tel: (+234) 08151478642  
 E: hello@farmsmarter.app
-
-## Screenshots
-
-_Add screenshots of the app here_
