@@ -19,5 +19,12 @@
     "price": 4.99,
     "image": "https://via.placeholder.com/150?text=Eggs",
     "stock": 30
+  },
+  {
+    "id": 4,
+    "name": "Organic Carrots",
+    "price": 2.99,
+    "image": "https://via.placeholder.com/150?text=Carrots",
+    "stock": 30
   }
 ] 

@@ -14,7 +14,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
     return (
-        <View className="bg-white rounded-xl shadow p-4 mb-4 w-44 mx-2">
+        <View className="bg-white rounded-xl border border-gray-200 p-4 mb-4 flex-1">
             <Image source={{ uri: product.image }} className="w-full h-24 rounded-lg mb-2" resizeMode="cover" />
             <Text className="text-farmsmarter-green font-bold text-lg mb-1">{product.name}</Text>
             <Text className="text-farmsmarter-darkgreen mb-1">₦{product.price.toFixed(2)}</Text>
@@ -22,4 +22,4 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             <Button label="Add to Cart" onPress={onAddToCart} style="bg-farmsmarter-orange" />
         </View>
     );
-} 
+}

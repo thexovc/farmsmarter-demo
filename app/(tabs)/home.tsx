@@ -1,13 +1,13 @@
-import * as FileSystem from 'expo-file-system';
+
+import { Ionicons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
+import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { productsData } from '../../assets/data/productsdata';
 import ProductCard from '../../components/ProductCard';
 import SearchBar from '../../components/SearchBar';
 import { useCart } from '../../contexts/CartContext';
-
-const PRODUCTS_PATH = FileSystem.documentDirectory + 'products.json';
-const ASSET_PRODUCTS_PATH = FileSystem.bundleDirectory ? FileSystem.bundleDirectory + 'assets/data/products.json' : undefined;
 
 export default function HomeScreen() {
     const [products, setProducts] = useState<any[]>([]);
@@ -15,17 +15,10 @@ export default function HomeScreen() {
     const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
     const [locLoading, setLocLoading] = useState(true);
     const { addToCart } = useCart();
+    const router = useRouter();
 
     useEffect(() => {
-        (async () => {
-            // Ensure products.json exists in documentDirectory
-            const exists = await FileSystem.getInfoAsync(PRODUCTS_PATH);
-            if (!exists.exists && ASSET_PRODUCTS_PATH) {
-                await FileSystem.copyAsync({ from: ASSET_PRODUCTS_PATH, to: PRODUCTS_PATH });
-            }
-            const file = await FileSystem.readAsStringAsync(PRODUCTS_PATH);
-            setProducts(JSON.parse(file));
-        })();
+        setProducts(productsData);
     }, []);
 
     useEffect(() => {
@@ -45,26 +38,37 @@ export default function HomeScreen() {
     const filteredProducts = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
 
     return (
-        <View className="flex-1 bg-farmsmarter-light px-2 pt-4">
+        <View className="flex-1 bg-farmsmarter-light px-2">
             <Text className="text-xl font-bold text-farmsmarter-green mb-2">Products</Text>
             <SearchBar value={search} onChangeText={setSearch} />
             <FlatList
                 data={filteredProducts}
                 keyExtractor={item => item.id.toString()}
                 numColumns={2}
+                columnWrapperStyle={{ gap: 10 }}
+                contentContainerStyle={{ padding: 10, paddingBottom: 16 }}
                 renderItem={({ item }) => (
                     <ProductCard product={item} onAddToCart={() => addToCart({ ...item, quantity: 1 })} />
                 )}
-                contentContainerStyle={{ paddingBottom: 16 }}
             />
-            <View className="mt-4 items-center">
-                <Text className="text-farmsmarter-darkgreen font-semibold">Your Location:</Text>
+            <View className="items-center">
                 {locLoading ? (
                     <ActivityIndicator size="small" color="#6A8A2C" className="mt-2" />
                 ) : location ? (
-                    <Text className="text-farmsmarter-green mt-2">Lat: {location.latitude.toFixed(4)}, Lon: {location.longitude.toFixed(4)}</Text>
+                    <TouchableOpacity className='items-center gap-2 m2-2' onPress={() => router.push('/map')}>
+                        <Text className="text-farmsmarter-darkgreen font-semibold">Your Location:</Text>
+                        <View className='flex-row items-center gap-2'>
+                            <Text className="text-farmsmarter-green">
+                                Lat: {location.latitude.toFixed(4)}, Lon: {location.longitude.toFixed(4)}
+                            </Text>
+                            <Ionicons name="map" size={15} color="#6A8A2C" />
+                        </View>
+                    </TouchableOpacity>
                 ) : (
-                    <Text className="text-red-500 mt-2">Location not available</Text>
+                    <>
+                        <Text className="text-farmsmarter-darkgreen font-semibold">Your Location:</Text>
+                        <Text className="text-red-500 mt-2 text-center">Location not available</Text>
+                    </>
                 )}
             </View>
         </View>

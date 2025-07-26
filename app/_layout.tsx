@@ -32,7 +32,7 @@ export default function RootLayout() {
               <AuthGate />
             )}
           </Stack>
-          <StatusBar style="auto" />
+          <StatusBar style="inverted" />
         </CartProvider>
       </AuthProvider>
     </ThemeProvider>
