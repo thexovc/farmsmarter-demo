@@ -3,28 +3,28 @@
     "id": 1,
     "name": "Organic Tomatoes",
     "price": 3.99,
-    "image": "https://via.placeholder.com/150?text=Tomatoes",
+    "image": "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=300&h=300&fit=crop",
     "stock": 20
   },
   {
     "id": 2,
     "name": "Fresh Lettuce",
     "price": 2.49,
-    "image": "https://via.placeholder.com/150?text=Lettuce",
+    "image": "https://images.unsplash.com/photo-1515356956468-873dd257f911?w=300&h=300&fit=crop",
     "stock": 15
   },
   {
     "id": 3,
     "name": "Farm Eggs (12pcs)",
     "price": 4.99,
-    "image": "https://via.placeholder.com/150?text=Eggs",
+    "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=300&h=300&fit=crop",
     "stock": 30
   },
   {
     "id": 4,
     "name": "Organic Carrots",
     "price": 2.99,
-    "image": "https://via.placeholder.com/150?text=Carrots",
+    "image": "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300&h=300&fit=crop",
     "stock": 30
   }
 ] 

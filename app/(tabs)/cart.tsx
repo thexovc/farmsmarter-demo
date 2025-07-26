@@ -25,10 +25,12 @@ export default function CartScreen() {
                 ListEmptyComponent={<Text className="text-farmsmarter-darkgreen mt-8 text-center">Your cart is empty.</Text>}
                 contentContainerStyle={{ paddingBottom: 16 }}
             />
-            <View className="mt-4">
-                <Text className="text-lg font-semibold text-farmsmarter-green mb-2">Total: ₦{total.toFixed(2)}</Text>
-                <Button label="Purchase" onPress={handlePurchase} style="bg-farmsmarter-orange" />
-            </View>
+            {cart.length > 0 && (
+                <View className="mt-4">
+                    <Text className="text-lg font-semibold text-farmsmarter-green mb-2">Total: ₦{total.toFixed(2)}</Text>
+                    <Button label="Purchase" onPress={handlePurchase} style="bg-farmsmarter-orange" />
+                </View>
+            )}
         </View>
     );
 } 
