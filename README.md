@@ -53,7 +53,6 @@ A mock e-commerce mobile app built with Expo (React Native), featuring authentic
 - NativeWind (Tailwind CSS for RN)
 - React Hook Form + Yup (forms/validation)
 - Expo Location (real device location)
-- Expo FileSystem (read/write JSON data)
 - AsyncStorage (persist cart/login)
 - Unsplash API (high-quality product images)
 
