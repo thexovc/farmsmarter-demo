@@ -4,15 +4,16 @@ import { TextInput, TextInputProps, TouchableOpacity, View } from 'react-native'
 
 interface InputProps extends TextInputProps {
     showPasswordToggle?: boolean;
+    className?: string;
 }
 
-export default function Input({ showPasswordToggle, secureTextEntry, ...props }: InputProps) {
+export default function Input({ showPasswordToggle, secureTextEntry, className, ...props }: InputProps) {
     const [visible, setVisible] = useState(false);
-    const isPassword = !!secureTextEntry && showPasswordToggle;
+    const isPassword = !!secureTextEntry;
     return (
         <View style={{ position: 'relative', width: '100%' }}>
             <TextInput
-                className="w-full border border-farmsmarter-green rounded-lg px-4 py-3 text-base text-farmsmarter-darkgreen bg-white"
+                className={className || "w-full border-2 border-farmsmarter-green rounded-lg px-4 py-3 text-base text-farmsmarter-darkgreen bg-white"}
                 placeholderTextColor="#6A8A2C"
                 secureTextEntry={isPassword ? !visible : secureTextEntry}
                 {...props}

@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, Text, TouchableOpacity, View } from 'react-native';
 import * as yup from 'yup';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -26,18 +26,35 @@ export default function LoginScreen() {
     const onSubmit = async (data: any) => {
         setError('');
         setLoading(true);
-        const success = await login(data.email, data.password);
-        setLoading(false);
-
-        console.log({ success });
-
-        if (!success) {
-            setError('Invalid email or password');
-        } else {
-            router.replace('/home');
+        try {
+            const success = await login(data.email, data.password);
+            if (success) {
+                Alert.alert(
+                    'Welcome Back!',
+                    'You have successfully logged in to FarmSmarter.',
+                    [
+                        {
+                            text: 'OK',
+                            onPress: () => router.replace('/(tabs)/home')
+                        }
+                    ]
+                );
+            } else {
+                Alert.alert(
+                    'Login Failed',
+                    'Invalid email or password. Please check your credentials and try again.',
+                    [{ text: 'OK' }]
+                );
+            }
+        } catch (error) {
+            Alert.alert(
+                'Error',
+                'Something went wrong. Please try again.',
+                [{ text: 'OK' }]
+            );
+        } finally {
+            setLoading(false);
         }
-
-
     };
 
     return (
@@ -66,7 +83,7 @@ export default function LoginScreen() {
                             keyboardType="email-address"
                             value={value}
                             onChangeText={onChange}
-                            className="w-full border border-gray-300 rounded-lg px-4 py-3 bg-gray-50"
+                            className="w-full border border-gray-300 rounded-lg px-4 py-4 bg-gray-50"
 
                         />
                     )}
@@ -83,7 +100,7 @@ export default function LoginScreen() {
                             showPasswordToggle={true}
                             value={value}
                             onChangeText={onChange}
-                            className="w-full border border-gray-300 rounded-lg px-4 py-3 bg-gray-50"
+                            className="w-full border border-gray-300 rounded-lg px-4 py-4 bg-gray-50"
                         />
                     )}
                 />
@@ -103,7 +120,7 @@ export default function LoginScreen() {
                 <Text className="mt-2 text-center text-farmsmarter-green text-lg font-bold" onPress={() => router.replace('/auth/signup')}>Sign Up</Text>
                 {/* Terms and Conditions */}
                 <Text className="mt-6 text-center text-gray-500 text-xs">
-                    By continuing you agree to FarmSmarter’s{' '}
+                    By continuing you agree to FarmSmarter's{' '}
                     <Text className="text-blue-500 underline">Terms and Conditions</Text>
                 </Text>
             </View>

@@ -12,7 +12,7 @@ interface AuthContextProps {
     user: User | null;
     login: (email: string, password: string) => Promise<boolean>;
     signup: (name: string, email: string, password: string) => Promise<boolean>;
-    logout: () => void;
+    logout: (onComplete?: () => void) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -46,14 +46,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             setUser(newUser);
             await AsyncStorage.setItem('user', JSON.stringify(newUser));
             return true;
-        } catch {
+        } catch (error) {
+            console.log({ error });
             return false;
         }
     };
 
-    const logout = async () => {
+    const logout = async (onComplete?: () => void) => {
         setUser(null);
         await AsyncStorage.removeItem('user');
+        if (onComplete) {
+            onComplete();
+        }
     };
 
     return (
