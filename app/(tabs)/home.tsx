@@ -14,11 +14,20 @@ export default function HomeScreen() {
     const [search, setSearch] = useState('');
     const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
     const [locLoading, setLocLoading] = useState(true);
+    const [productsLoading, setProductsLoading] = useState(true);
     const { addToCart } = useCart();
     const router = useRouter();
 
     useEffect(() => {
-        setProducts(productsData);
+        // Delay product loading by 1.5 seconds
+        const loadProducts = async () => {
+            setProductsLoading(true);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setProducts(productsData);
+            setProductsLoading(false);
+        };
+
+        loadProducts();
     }, []);
 
     useEffect(() => {
@@ -36,6 +45,15 @@ export default function HomeScreen() {
     }, []);
 
     const filteredProducts = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+
+    if (productsLoading) {
+        return (
+            <View className="flex-1 bg-farmsmarter-light items-center justify-center">
+                <ActivityIndicator size="large" color="#6A8A2C" />
+                <Text className="text-farmsmarter-green mt-4 text-lg">Loading products...</Text>
+            </View>
+        );
+    }
 
     return (
         <View className="flex-1 bg-farmsmarter-light px-2">
