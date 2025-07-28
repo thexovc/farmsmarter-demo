@@ -39,6 +39,9 @@ A mock e-commerce mobile app built with Expo (React Native), featuring authentic
 - **Default test user:**
   - Email: `john@farmsmarter.app`
   - Password: `Password@123`
+    or
+  - Email: `test@gmail.com`
+  - Password": `Password@123`
 - **Sign up:**
   - Use the signup screen to create a new user (appends to `users.json`).
 - **Login:**
